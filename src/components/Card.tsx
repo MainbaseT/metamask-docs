@@ -1,7 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import styles from "./Card.module.css";
+import Heading from "@theme/Heading";
+import styles from "./card.module.css";
 
 export type CardItem = {
   title: string;
@@ -11,9 +12,11 @@ export type CardItem = {
 
 export default function Card({ title, link, description }: CardItem) {
   return (
-    <div className="col col--4 margin-top--sm margin-bottom--md">
-      <Link className={clsx(styles.root, "card")} href={link}>
-        <div className="card__header"><h3>{title}</h3></div>
+    <div className={clsx("col col--4 margin-bottom--lg", styles.cardContainer)}>
+      <Link className={clsx(styles.root, "card")} to={link}>
+        <div className="card__header">
+          <Heading as="h3">{title}</Heading>
+        </div>
         <div className="card__body">{description}</div>
       </Link>
     </div>

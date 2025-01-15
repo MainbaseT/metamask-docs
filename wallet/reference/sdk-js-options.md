@@ -1,32 +1,35 @@
 ---
 description: See the JavaScript SDK options reference.
-sidebar_position: 1
 tags:
   - JavaScript SDK
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 # JavaScript SDK options
 
-The [JavaScript version of MetaMask SDK](../how-to/use-sdk/javascript/index.md) takes the
+The [JavaScript version of MetaMask SDK](../connect/metamask-sdk/javascript/index.md) takes the
 following options.
 
-### checkInstallationImmediately
+### `checkInstallationImmediately`
 
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 checkInstallationImmediately: <boolean>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 checkInstallationImmediately: true
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 Enables or disables immediately checking if MetaMask is installed on the user's browser.
 If `true`, the SDK checks for installation upon page load and sends a connection request, prompting
@@ -35,101 +38,83 @@ If `false`, the SDK waits for the connect method to be called to check for insta
 
 The default is `false`.
 
-### checkInstallationOnAllCalls
+### `checkInstallationOnAllCalls`
 
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 checkInstallationOnAllCalls: <boolean>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 checkInstallationOnAllCalls: true
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 Enables or disables checking if MetaMask is installed on the user's browser before each RPC request.
 The default is `false`.
 
-### communicationLayerPreference
+### `communicationServerUrl`
 
-<!--tabs-->
-
-# Syntax
-
-```javascript
-communicationLayerPreference: <type>
-```
-
-# Example
-
-```javascript
-communicationLayerPreference: SOCKET
-```
-
-<!--/tabs-->
-
-The preferred communication layer to use.
-The default and only option is `SOCKET` for [Socket.IO](https://socket.io/docs/v4/).
-
-### communicationServerUrl
-
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 communicationServerUrl: <string>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 communicationServerUrl: "https://metamask-sdk-socket.metafi.codefi.network/"
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 The URL of the communication server to use.
 This option is mainly used for debugging and testing the SDK.
 
-### dappMetadata
+### `dappMetadata`
 
-<!--tabs-->
-
-# Syntax
-
-```javascript
-dappMetadata: {
-    name: <string>,
-    url: <string>,
-    base64Icon: <string>,
-}
-```
-
-# Example
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 dappMetadata: {
-    name: "My Dapp",
-    url: "https://mydapp.com",
-    base64Icon: "data:image/png;base64,...",
+  name: <string>,
+  url: <string>,
+  iconUrl: <string>,
 }
 ```
 
-<!--/tabs-->
+</TabItem>
+<TabItem value="Example">
+
+```javascript
+dappMetadata: {
+  name: "My Dapp",
+  url: "https://mydapp.com",
+  iconUrl: "https://mydapp.com/icon.png",
+}
+```
+
+</TabItem>
+</Tabs>
 
 Metadata about the dapp using the SDK.
 The metadata options are:
 
 - `name` - Name of the dapp
 - `url` - URL of the dapp
-- `base64Icon` - A base64-encoded icon
+- `iconUrl` - URL of the dapp's icon
 
 :::tip important
 Setting `dappMetaData` creates a clear and trustworthy user experience when connecting your dapp to
@@ -138,89 +123,93 @@ MetaMask Mobile displays this metadata in the connection modal to help users ide
 connection request.
 :::
 
-### defaultReadOnlyChainId
+### `defaultReadOnlyChainId`
 
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 defaultReadOnlyChainId: <number or hexadecimal string>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 defaultReadOnlyChainId: "0x1"
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 Enables sending [read-only RPC requests](../how-to/make-read-only-requests.md) to
 this chain ID before the user connects to MetaMask.
 The value is automatically updated to the chain ID used in MetaMask once connected.
 
-### enableDebug
+### `enableAnalytics`
 
-<!--tabs-->
-
-# Syntax
-
-```javascript
-enableDebug: <boolean>
-```
-
-# Example
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
-enableDebug: false
+enableAnalytics: <boolean>
 ```
 
-<!--/tabs-->
+</TabItem>
+<TabItem value="Example">
+
+```javascript
+enableAnalytics: true
+```
+
+</TabItem>
+</Tabs>
 
 Enables or disables sending anonymous analytics to MetaMask to help improve the SDK.
 The default is `true`.
 
-### extensionOnly
+### `extensionOnly`
 
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 extensionOnly: <boolean>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 extensionOnly: true
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 Enables or disables automatically using the MetaMask browser extension if it's detected.
-The default is `false`.
+The default is `true`.
 
-### infuraAPIKey
+### `infuraAPIKey`
 
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 infuraAPIKey: <string>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 infuraAPIKey: process.env.INFURA_API_KEY
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
-The [Infura API key](https://docs.infura.io/networks/ethereum/how-to/secure-a-project/project-id) to
+The [Infura API key](/developer-tools/dashboard/get-started/create-api) to
 use for RPC requests.
 Configure this option to [make read-only RPC requests from your dapp](../how-to/make-read-only-requests.md).
 
@@ -231,227 +220,96 @@ You can restrict interactions to specific addresses, origins, user agents, and r
 We recommend using all allowlist options to maximize the security of your API key and dapp.
 :::
 
-### modals
+### `headless`
 
-<!--tabs-->
-
-# Syntax
-
-```javascript
-modals: <object>
-```
-
-# Example
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
-modals: {
-    onPendingModalDisconnect: () => {
-        // Custom logic for pending modal disconnect
-    },
-    install: (params) => {
-        // Custom install modal logic
-        const { link, debug, installer, terminate, connectWithExtension } = params;
-        return {
-            mount: (link) => { /* custom mount logic */ },
-            unmount: (shouldTerminate) => { /* custom unmount logic */ },
-        };
-    },
-    otp: ({ debug, onDisconnect }) => {
-        // Custom OTP modal logic
-        return {
-            mount: () => { /* custom mount logic */ },
-            updateOTPValue: (otpValue) => { /* custom OTP value update logic */ },
-            unmount: () => { /* custom unmount logic */ },
-        };
-    },
-}
+headless: <boolean>
 ```
 
-<!--/tabs-->
+</TabItem>
+<TabItem value="Example">
 
-An object that allows you to [customize the logic and UI of the displayed modals](../how-to/display/custom-modals.md).
-This is useful if your dapp requires a custom way to handle connection and reconnection scenarios.
+```javascript
+headless: true
+```
 
-### openDeeplink
+</TabItem>
+</Tabs>
 
-<!--tabs-->
+Enables or disables headless mode.
+Setting this to `true` allows you to [display custom modals](../how-to/display/custom-modals.md).
+The default is `false`.
 
-# Syntax
+### `openDeeplink`
+
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 openDeeplink: <function>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 openDeeplink: (link: string) => {
-    if (canOpenLink) {
-        Linking.openURL(link);
-    }
+  if (canOpenLink) {
+    Linking.openURL(link);
+  }
 }
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 A function that is called to open a deeplink to the MetaMask Mobile app.
 
-### preferDesktop
+### `readonlyRPCMap`
 
-<!--tabs-->
-
-# Syntax
-
-```javascript
-preferDesktop: <boolean>
-```
-
-# Example
-
-```javascript
-preferDesktop: true
-```
-
-<!--/tabs-->
-
-Enables or disables preferring the MetaMask browser extension over MetaMask Mobile.
-The default is `false`.
-
-### readonlyRPCMap
-
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 readonlyRPCMap: <map>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 readonlyRPCMap: {
-    "0x539": "http://localhost:8545",
+  "0x539": "http://localhost:8545",
 }
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 A map of RPC URLs to use for [read-only RPC requests](../how-to/make-read-only-requests.md).
 
-### shouldShimWeb3
+### `shouldShimWeb3`
 
-<!--tabs-->
-
-# Syntax
+<Tabs>
+<TabItem value="Syntax">
 
 ```javascript
 shouldShimWeb3: <boolean>
 ```
 
-# Example
+</TabItem>
+<TabItem value="Example">
 
 ```javascript
 shouldShimWeb3: false
 ```
 
-<!--/tabs-->
+</TabItem>
+</Tabs>
 
 Enables or disables shimming the `window.web3` object with the Ethereum provider returned by the SDK
 (useful for compatibility with older browsers).
 The default is `true`.
-
-### timer
-
-<!--tabs-->
-
-# Example
-
-```javascript
-timer: BackgroundTimer
-```
-
-<!--/tabs-->
-
-Used by React Native dapps to keep the dapp alive while using
-[`react-native-background-timer`](https://github.com/ocetnik/react-native-background-timer).
-
-### transports
-
-<!--tabs-->
-
-# Syntax
-
-```javascript
-transports: <array of strings>
-```
-
-# Example
-
-```javascript
-transports: ["websocket", "polling"]
-```
-
-<!--/tabs-->
-
-Sets the preference on [Socket.IO](https://socket.io/docs/v4/) transports.
-
-### ui
-
-<!--tabs-->
-
-# Syntax
-
-```javascript
-ui: {
-    installer: <function>,
-    confirm: <function>,
-}
-```
-
-<!--/tabs-->
-
-Options for customizing the SDK UI.
-
-### useDeeplink
-
-<!--tabs-->
-
-# Syntax
-
-```javascript
-useDeeplink: <boolean>
-```
-
-# Example
-
-```javascript
-useDeeplink: true
-```
-
-<!--/tabs-->
-
-Enables or disables using deeplinks to connect with MetaMask Mobile.
-If `false`, the SDK uses universal links instead.
-The default is `false`.
-
-### wakeLockType
-
-<!--tabs-->
-
-# Syntax
-
-```javascript
-wakeLockType: <type>
-```
-
-# Example
-
-```javascript
-wakeLockType: Temporary
-```
-
-<!--/tabs-->
-
-The type of wake lock to use when the SDK is running in the background.
-Options are `Disabled`, `Temporary`, and `UntilResponse`.

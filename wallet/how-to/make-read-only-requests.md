@@ -1,5 +1,4 @@
 ---
-sidebar_position: 9
 description: Use Infura and custom nodes to make direct, read-only requests in your JavaScript dapp.
 tags:
   - JavaScript SDK
@@ -7,11 +6,11 @@ tags:
 
 # Make read-only requests
 
-You can use the [Infura API](https://docs.infura.io/) from your dapp with
-[MetaMask SDK](../concepts/sdk/index.md) installed to make direct, read-only JSON-RPC requests.
+You can use the [Infura API](/services) from your dapp with
+[MetaMask SDK](../connect/metamask-sdk/index.md) installed to make direct, read-only JSON-RPC requests.
 
 Direct, read-only JSON-RPC requests are blockchain requests that do not require user wallet interaction.
-Your dapp can directly call most [JSON-RPC API methods](/wallet/reference/json-rpc-api), bypassing
+Your dapp can directly call most [JSON-RPC API methods](/wallet/reference/json-rpc-methods), bypassing
 user wallet authentication for read-only operations.
 
 :::note
@@ -27,7 +26,7 @@ Your dapp cannot directly call the following RPC methods, which require user wal
 - `wallet_watchAsset`
 - `wallet_addEthereumChain`
 - `wallet_switchEthereumChain`
-:::
+  :::
 
 Configure your dapp to make read-only requests using the [Infura API](#use-the-infura-api),
 [custom nodes](#use-custom-nodes), or [both](#use-the-infura-api-and-custom-nodes).
@@ -36,22 +35,22 @@ Configure your dapp to make read-only requests using the [Infura API](#use-the-i
 
 - An Infura API key.
   Create one by following the first two steps in the
-  [Infura getting started guide](https://docs.infura.io/getting-started).
+  [Infura getting started guide](/services/get-started/infura).
 
-- [An allowlist configured for your API key.](https://docs.infura.io/networks/ethereum/how-to/secure-a-project/use-an-allowlist)
+- [An allowlist configured for your API key.](/developer-tools/dashboard/how-to/secure-an-api/use-an-allowlist)
 
   :::caution important
   Your API key, when used with the SDK, is vulnerable to exposure.
   If someone inspects your dapp's code, they can potentially retrieve your API key and submit
   requests to Infura, impersonating your account.
 
-  Use [allowlists](https://docs.infura.io/networks/ethereum/how-to/secure-a-project/use-an-allowlist)
+  Use [allowlists](/developer-tools/dashboard/how-to/secure-an-api/use-an-allowlist)
   to protect against this vulnerability.
   You can restrict interactions with your API key to specific addresses, origins, user agents, and request methods.
   We recommend using all allowlist options to maximize the security of your API key and dapp.
   :::
 
-- [MetaMask SDK set up](use-sdk/javascript/index.md) in your JavaScript dapp.
+- [MetaMask SDK set up](../connect/metamask-sdk/javascript/index.md) in your JavaScript dapp.
 
 ## Use the Infura API
 
@@ -60,7 +59,7 @@ To use the Infura API to make read-only requests, specify your Infura API key us
 in your dapp.
 
 ```javascript
-infuraAPIKey: "YOUR-API-KEY"
+infuraAPIKey: "<YOUR-API-KEY>"
 ```
 
 ## Use custom nodes
@@ -87,11 +86,11 @@ SDK in your dapp.
 
 ```javascript
 sdkOptions={{
-    infuraAPIKey: "YOUR-API-KEY",
-    readonlyRPCMap: {
-        "0x539": "http://localhost:8545",
-    },
-    // Other options
+  infuraAPIKey: "<YOUR-API-KEY>",
+  readonlyRPCMap: {
+    "0x539": "http://localhost:8545",
+  },
+  // Other options.
 }}
 ```
 
@@ -110,16 +109,16 @@ The following is an example of using both the Infura API and custom nodes with t
 
 ```javascript
 sdkOptions={{
-    infuraAPIKey: "YOUR-API-KEY",
-    readonlyRPCMap: {
-        // Custom node
-        "0x539": "http://localhost:8545",
-        // Override Infura Mainnet
-        "0x1": "https://mainnet.infura.io/v3/YOUR-API-KEY",
-    },
-    defaultReadOnlyChainId: "0x1",
-    // Other options
-}
+  infuraAPIKey: "<YOUR-API-KEY>",
+  readonlyRPCMap: {
+    // Custom node.
+    "0x539": "http://localhost:8545",
+    // Override Infura Mainnet.
+    "0x1": "https://mainnet.infura.io/v3/<YOUR-API-KEY>",
+  },
+  defaultReadOnlyChainId: "0x1",
+  // Other options.
+}}
 ```
 
 In this example, read-only requests to Mainnet (chain ID `0x1`) use the Infura API, while read-only

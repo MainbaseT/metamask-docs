@@ -1,6 +1,6 @@
 ---
 description: Use Jest for end-to-end Snap testing.
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Test a Snap
@@ -14,7 +14,7 @@ as follows.
 
 ## Steps
 
-### 1. Install @metamask/snaps-jest
+### 1. Install `@metamask/snaps-jest`
 
 Install the `@metamask/snaps-jest` package into your Snap project using [Yarn](https://yarnpkg.com/)
 or [npm](https://www.npmjs.com/):
@@ -29,15 +29,15 @@ or
 npm i @metamask/snaps-jest
 ```
 
-### 2. Configure @metamask/snaps-jest
+### 2. Configure `@metamask/snaps-jest`
 
 The easiest way to configure this package is to add it to your Jest configuration as a preset.
 In the `jest.config.js` file, add the following:
 
 ```js title="jest.config.js"
 module.exports = {
-  preset: '@metamask/snaps-jest',
-};
+  preset: "@metamask/snaps-jest",
+}
 ```
 
 This automatically configures Jest to use the `@metamask/snaps-jest` environment, and to use the
@@ -56,9 +56,9 @@ environment and matchers to your Jest configuration manually:
 
 ```js title="jest.config.js"
 module.exports = {
-  testEnvironment: '@metamask/snaps-jest',
-  setupFilesAfterEnv: ['@metamask/snaps-jest/dist/cjs/setup.js'],
-};
+  testEnvironment: "@metamask/snaps-jest",
+  setupFilesAfterEnv: ["@metamask/snaps-jest/dist/cjs/setup.js"],
+}
 ```
 
 You can pass any [Jest options](../reference/jest.md#options) to the test environment by adding a
@@ -67,23 +67,23 @@ For example:
 
 ```js title="jest.config.js"
 module.exports = {
-  preset: '@metamask/snaps-jest',
+  preset: "@metamask/snaps-jest",
   testEnvironmentOptions: {
-    // Options go here
+    // Options go here.
   },
-};
+}
 ```
 
 All options are optional.
 
-### 3. Use @metamask/snaps-jest
+### 3. Use `@metamask/snaps-jest`
 
 Use the package by calling any of the [API methods](../reference/jest.md#api-methods).
 You can:
 
 - [Install a Snap.](../reference/jest.md#installsnap)
 - [Send a transaction to the Snap.](../reference/jest.md#sendtransaction)
-- [Run a cronjob in the Snap.](../reference/jest.md#runcronjob)
+- [Run a cron job in the Snap.](../reference/jest.md#runcronjob)
 - [Interact with user interfaces.](../reference/jest.md#getinterface)
 - [Mock the response of a network request.](../reference/jest.md#mock)
 - [Close the testing page.](../reference/jest.md#close)
